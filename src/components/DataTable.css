@@ -1,0 +1,126 @@
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.data-table th {
+  background: #f8f9fa;
+  padding: 15px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #495057;
+  border-bottom: 2px solid #dee2e6;
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e9ecef;
+  vertical-align: middle;
+}
+
+.data-table tbody tr {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f8f9fa;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.data-table tbody tr.selected {
+  background-color: #e3f2fd;
+  border-left: 4px solid #2196f3;
+}
+
+/* Стили для колонок */
+.data-table th:nth-child(1) { width: 35%; }
+.data-table th:nth-child(2) { width: 20%; }
+.data-table th:nth-child(3) { width: 25%; }
+.data-table th:nth-child(4) { width: 20%; }
+
+/* Стили для текущего дня */
+.current-day {
+  background-color: #e3f2fd;
+  font-weight: 600;
+  color: #1976d2;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin: 0 4px;
+  display: inline-block;
+}
+
+/* Стили для вчерашнего дня */
+.yesterday {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.yesterday .value {
+  font-weight: 500;
+}
+
+.yesterday .change {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-width: 50px;
+  text-align: center;
+}
+
+.yesterday .change.positive {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.yesterday .change.negative {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.yesterday .change.neutral {
+  background-color: #e9ecef;
+  color: #6c757d;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .data-table {
+    font-size: 0.9rem;
+  }
+  
+  .data-table th,
+  .data-table td {
+    padding: 10px 8px;
+  }
+  
+  .current-day {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+  
+  .yesterday .change {
+    padding: 3px 6px;
+    font-size: 0.8rem;
+    min-width: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .data-table th:nth-child(4) {
+    display: none;
+  }
+  
+  .data-table td:nth-child(4) {
+    display: none;
+  }
+  
+  .data-table th:nth-child(1) { width: 40%; }
+  .data-table th:nth-child(2) { width: 30%; }
+  .data-table th:nth-child(3) { width: 30%; }
+}
