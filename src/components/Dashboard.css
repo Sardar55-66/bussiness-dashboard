@@ -4,22 +4,104 @@
   padding: 20px;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #2c3e50;
-  font-size: 2.5rem;
-  font-weight: 300;
-}
-
 .dashboard {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
 
-/* Контейнер для графика */
+.header-section {
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 35% 20% 25% 20%;
+  padding: 15px 20px;
+  background: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.header-cell {
+  font-weight: 600;
+  color: #495057;
+  font-size: 0.95rem;
+}
+
+.selected-row-display {
+  display: grid;
+  grid-template-columns: 35% 20% 25% 20%;
+  padding: 15px 20px;
+  background: #e3f2fd;
+  border-bottom: 1px solid #e9ecef;
+  align-items: center;
+}
+
+.no-selection-message {
+  padding: 15px 20px;
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.selected-indicator {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.selected-current-day {
+  background-color: #e3f2fd;
+  font-weight: 600;
+  color: #1976d2;
+  border-radius: 6px;
+  padding: 8px 12px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.selected-yesterday {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.selected-value {
+  font-weight: 500;
+}
+
+.selected-change {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-width: 50px;
+  text-align: center;
+}
+
+.selected-change.positive {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.selected-change.negative {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.selected-change.neutral {
+  background-color: #e9ecef;
+  color: #6c757d;
+}
+
+.selected-week-day {
+  font-weight: 500;
+  color: #495057;
+}
+
 .chart-container {
   background: #f8f9fa;
   padding: 20px;
@@ -35,6 +117,7 @@ h1 {
   font-size: 1.1rem;
   font-style: italic;
   text-align: center;
+  padding: 20px;
 }
 
 .chart-wrapper {
@@ -42,21 +125,67 @@ h1 {
   height: 350px;
 }
 
-/* Контейнер для таблицы */
 .table-container {
   overflow-x: auto;
   padding: 20px;
 }
 
-/* Адаптивность */
+.table-header-controls {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.refresh-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.refresh-button:hover {
+  background: #0056b3;
+}
+
+.refresh-button:active {
+  background: #004085;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .table-header,
+  .selected-row-display,
+  .no-selection-message {
+    padding: 12px 15px;
+  }
+  
+  .chart-container {
+    min-height: 350px;
+  }
+  
+  .chart-wrapper {
+    height: 300px;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 10px;
   }
   
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+  .table-header,
+  .selected-row-display,
+  .no-selection-message {
+    padding: 10px 12px;
+    font-size: 0.9rem;
   }
   
   .chart-container {
@@ -70,5 +199,61 @@ h1 {
   
   .table-container {
     padding: 15px;
+  }
+  
+  .chart-placeholder {
+    font-size: 1rem;
+    padding: 15px;
+  }
+  
+  .refresh-button {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 8px;
+  }
+  
+  .dashboard {
+    border-radius: 8px;
+  }
+  
+  .table-header,
+  .selected-row-display,
+  .no-selection-message {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    grid-template-columns: 40% 30% 30%;
+  }
+  
+  .header-cell:nth-child(4),
+  .selected-week-day {
+    display: none;
+  }
+  
+  .chart-container {
+    padding: 12px;
+    min-height: 250px;
+  }
+  
+  .chart-wrapper {
+    height: 200px;
+  }
+  
+  .table-container {
+    padding: 12px;
+  }
+  
+  .chart-placeholder {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+  
+  .refresh-button {
+    padding: 5px 10px;
+    font-size: 0.8rem;
   }
 }

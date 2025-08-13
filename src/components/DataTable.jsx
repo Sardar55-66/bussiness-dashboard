@@ -1,27 +1,20 @@
 import React from 'react'
-import { tableData } from '../data/tableData'
 import './DataTable.css'
 
-function DataTable({ onRowSelect, selectedMetric }) {
+function DataTable({ tableData, onRowSelect, selectedMetric }) {
   const handleRowClick = (metric) => {
     onRowSelect(metric)
   }
 
+  const filteredTableData = tableData.filter(row => row.metric !== selectedMetric)
+
   return (
     <table className="data-table">
-      <thead>
-        <tr>
-          <th>Показатель</th>
-          <th>Текущий день</th>
-          <th>Вчера</th>
-          <th>Этот день недели</th>
-        </tr>
-      </thead>
       <tbody>
-        {tableData.map((row) => (
+        {filteredTableData.map((row) => (
           <tr
             key={row.metric}
-            className={`table-row ${selectedMetric === row.metric ? 'selected' : ''}`}
+            className="table-row"
             onClick={() => handleRowClick(row.metric)}
           >
             <td>{row.indicator}</td>

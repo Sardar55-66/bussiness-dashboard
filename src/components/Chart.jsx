@@ -14,7 +14,8 @@ function Chart({ metric }) {
       backgroundColor: 'transparent',
       style: {
         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-      }
+      },
+      spacing: [20, 20, 20, 20]
     },
     title: {
       text: data.title,

@@ -4,16 +4,6 @@
   font-size: 0.95rem;
 }
 
-.data-table th {
-  background: #f8f9fa;
-  padding: 15px 12px;
-  text-align: left;
-  font-weight: 600;
-  color: #495057;
-  border-bottom: 2px solid #dee2e6;
-  white-space: nowrap;
-}
-
 .data-table td {
   padding: 12px;
   border-bottom: 1px solid #e9ecef;
@@ -31,18 +21,11 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.data-table tbody tr.selected {
-  background-color: #e3f2fd;
-  border-left: 4px solid #2196f3;
-}
+.data-table td:nth-child(1) { width: 35%; }
+.data-table td:nth-child(2) { width: 20%; }
+.data-table td:nth-child(3) { width: 25%; }
+.data-table td:nth-child(4) { width: 20%; }
 
-/* Стили для колонок */
-.data-table th:nth-child(1) { width: 35%; }
-.data-table th:nth-child(2) { width: 20%; }
-.data-table th:nth-child(3) { width: 25%; }
-.data-table th:nth-child(4) { width: 20%; }
-
-/* Стили для текущего дня */
 .current-day {
   background-color: #e3f2fd;
   font-weight: 600;
@@ -53,7 +36,6 @@
   display: inline-block;
 }
 
-/* Стили для вчерашнего дня */
 .yesterday {
   display: flex;
   align-items: center;
@@ -74,8 +56,8 @@
 }
 
 .yesterday .change.positive {
-  background-color: #d4edda;
-  color: #155724;
+  background-color: #d1e7dd;
+  color: #0f5132;
 }
 
 .yesterday .change.negative {
@@ -88,19 +70,35 @@
   color: #6c757d;
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .data-table {
     font-size: 0.9rem;
   }
   
-  .data-table th,
   .data-table td {
     padding: 10px 8px;
   }
   
   .current-day {
     padding: 6px 10px;
+  }
+  
+  .yesterday .change {
+    min-width: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .data-table {
+    font-size: 0.85rem;
+  }
+  
+  .data-table td {
+    padding: 8px 6px;
+  }
+  
+  .current-day {
+    padding: 5px 8px;
     font-size: 0.9rem;
   }
   
@@ -109,18 +107,41 @@
     font-size: 0.8rem;
     min-width: 40px;
   }
+  
+  .yesterday {
+    gap: 6px;
+  }
 }
 
 @media (max-width: 480px) {
-  .data-table th:nth-child(4) {
-    display: none;
-  }
-  
   .data-table td:nth-child(4) {
     display: none;
   }
   
-  .data-table th:nth-child(1) { width: 40%; }
-  .data-table th:nth-child(2) { width: 30%; }
-  .data-table th:nth-child(3) { width: 30%; }
+  .data-table td:nth-child(1) { width: 40%; }
+  .data-table td:nth-child(2) { width: 30%; }
+  .data-table td:nth-child(3) { width: 30%; }
+  
+  .data-table {
+    font-size: 0.8rem;
+  }
+  
+  .data-table td {
+    padding: 6px 4px;
+  }
+  
+  .current-day {
+    padding: 4px 6px;
+    font-size: 0.8rem;
+  }
+  
+  .yesterday .change {
+    padding: 2px 4px;
+    font-size: 0.75rem;
+    min-width: 35px;
+  }
+  
+  .yesterday {
+    gap: 4px;
+  }
 }
